@@ -1,0 +1,75 @@
+me@vm1:~/src/autoload-testcase$ rvm 1.8.7-p330,1.9.2-p0,1.9.2-p136,rbx-1.2.0 exec sh -c 'ruby -v; ruby foo.rb; echo'
+ruby 1.8.7 (2010-12-23 patchlevel 330) [x86_64-linux]
+["/home/me/src/autoload-testcase/./foo",
+ "/home/me/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/site_ruby/1.8",
+ "/home/me/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/site_ruby/1.8/x86_64-linux",
+ "/home/me/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/site_ruby",
+ "/home/me/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/vendor_ruby/1.8",
+ "/home/me/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/vendor_ruby/1.8/x86_64-linux",
+ "/home/me/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/vendor_ruby",
+ "/home/me/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8",
+ "/home/me/.rvm/rubies/ruby-1.8.7-p330/lib/ruby/1.8/x86_64-linux",
+ "."]
+Foo::Bar
+
+ruby 1.9.2p0 (2010-08-18 revision 29036) [x86_64-linux]
+["/home/me/src/autoload-testcase/./foo",
+ "/home/me/.rvm/rubies/ruby-1.9.2-p0/lib/ruby/site_ruby/1.9.1",
+ "/home/me/.rvm/rubies/ruby-1.9.2-p0/lib/ruby/site_ruby/1.9.1/x86_64-linux",
+ "/home/me/.rvm/rubies/ruby-1.9.2-p0/lib/ruby/site_ruby",
+ "/home/me/.rvm/rubies/ruby-1.9.2-p0/lib/ruby/vendor_ruby/1.9.1",
+ "/home/me/.rvm/rubies/ruby-1.9.2-p0/lib/ruby/vendor_ruby/1.9.1/x86_64-linux",
+ "/home/me/.rvm/rubies/ruby-1.9.2-p0/lib/ruby/vendor_ruby",
+ "/home/me/.rvm/rubies/ruby-1.9.2-p0/lib/ruby/1.9.1",
+ "/home/me/.rvm/rubies/ruby-1.9.2-p0/lib/ruby/1.9.1/x86_64-linux"]
+/home/me/src/autoload-testcase/foo/bar.rb:2:in `<module:Foo>': uninitialized constant Foo::Bar (NameError)
+	from /home/me/src/autoload-testcase/foo/bar.rb:1:in `<top (required)>'
+	from foo.rb:10:in `<main>'
+
+ruby 1.9.2p136 (2010-12-25 revision 30365) [x86_64-linux]
+["/home/me/src/autoload-testcase/./foo",
+ "/home/me/.rvm/rubies/ruby-1.9.2-p136/lib/ruby/site_ruby/1.9.1",
+ "/home/me/.rvm/rubies/ruby-1.9.2-p136/lib/ruby/site_ruby/1.9.1/x86_64-linux",
+ "/home/me/.rvm/rubies/ruby-1.9.2-p136/lib/ruby/site_ruby",
+ "/home/me/.rvm/rubies/ruby-1.9.2-p136/lib/ruby/vendor_ruby/1.9.1",
+ "/home/me/.rvm/rubies/ruby-1.9.2-p136/lib/ruby/vendor_ruby/1.9.1/x86_64-linux",
+ "/home/me/.rvm/rubies/ruby-1.9.2-p136/lib/ruby/vendor_ruby",
+ "/home/me/.rvm/rubies/ruby-1.9.2-p136/lib/ruby/1.9.1",
+ "/home/me/.rvm/rubies/ruby-1.9.2-p136/lib/ruby/1.9.1/x86_64-linux"]
+/home/me/src/autoload-testcase/foo/bar.rb:2:in `<module:Foo>': uninitialized constant Foo::Bar (NameError)
+	from /home/me/src/autoload-testcase/foo/bar.rb:1:in `<top (required)>'
+	from foo.rb:10:in `<main>'
+
+rubinius 1.2.0 (1.8.7 release 2010-12-21 JI) [x86_64-unknown-linux-gnu]
+["/home/me/src/autoload-testcase/./foo",
+ "/home/me/.rvm/rubies/rbx-1.2.0-20101221/site",
+ "/home/me/.rvm/rubies/rbx-1.2.0-20101221/site/x86_64-linux-gnu",
+ "/home/me/.rvm/rubies/rbx-1.2.0-20101221/vendor",
+ "/home/me/.rvm/rubies/rbx-1.2.0-20101221/vendor/x86_64-linux-gnu",
+ "/home/me/.rvm/rubies/rbx-1.2.0-20101221/lib",
+ "."]
+Foo::Bar
+
+me@vm1:~/src/autoload-testcase$ rvm jruby-1.5.6 exec sh -c 'ruby --1.8 -v; ruby --1.8 foo.rb'
+jruby 1.5.6 (ruby 1.8.7 patchlevel 249) (2010-12-03 9cf97c3) (OpenJDK 64-Bit Server VM 1.6.0_20) [amd64-java]
+["/home/me/src/autoload-testcase/./foo",
+ "/home/me/.rvm/rubies/jruby-1.5.6/lib/ruby/site_ruby/1.8",
+ "/home/me/.rvm/rubies/jruby-1.5.6/lib/ruby/site_ruby/shared",
+ "/home/me/.rvm/rubies/jruby-1.5.6/lib/ruby/1.8",
+ "."]
+Foo::Bar
+
+me@vm1:~/src/autoload-testcase$ rvm jruby-1.5.6 exec sh -c 'ruby --1.9 -v; ruby --1.9 foo.rb'
+jruby 1.5.6 (ruby 1.9.2dev trunk 24787) (2010-12-03 9cf97c3) (OpenJDK 64-Bit Server VM 1.6.0_20) [amd64-java]
+["/home/me/src/autoload-testcase/./foo",
+ "/home/me/.rvm/rubies/jruby-1.5.6/lib/ruby/site_ruby/1.9",
+ "/home/me/.rvm/rubies/jruby-1.5.6/lib/ruby/site_ruby/shared",
+ "/home/me/.rvm/rubies/jruby-1.5.6/lib/ruby/site_ruby/1.8",
+ "/home/me/.rvm/rubies/jruby-1.5.6/lib/ruby/1.9",
+ ".",
+ "/home/me/.rvm/gems/jruby-1.5.6/gems/rake-0.8.7/bin",
+ "/home/me/.rvm/gems/jruby-1.5.6/gems/rake-0.8.7/lib",
+ "/home/me/.rvm/gems/jruby-1.5.6/gems/jruby-launcher-1.0.5-java/lib",
+ "/home/me/.rvm/gems/jruby-1.5.6@global/gems/jruby-openssl-0.7.2/lib",
+ "/home/me/.rvm/gems/jruby-1.5.6@global/gems/bouncy-castle-java-1.5.0145.2/lib"]
+Foo::Bar
